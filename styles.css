@@ -551,10 +551,6 @@ p  { color: var(--text-2); font-size: 0.95rem; }
   position: relative;
 }
 
-.use-card-private {
-  pointer-events: none;
-}
-
 .use-dot {
   position: absolute;
   top: 14px; right: 14px;
@@ -1576,6 +1572,14 @@ p  { color: var(--text-2); font-size: 0.95rem; }
 @media (max-width: 768px) {
   :root { --header-h: 62px; }
 
+  html {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+  }
+
+  .slide { scroll-snap-align: none; }
+  #slide-0, #slide-1, #slide-2, #slide-4 { min-height: auto; }
+
   .two-col, .three-col, .tips-row,
   .two-col-sm, .action-row, .checklist-grid { grid-template-columns: 1fr; }
 
@@ -1590,14 +1594,19 @@ p  { color: var(--text-2); font-size: 0.95rem; }
 
   /* Bulb expand already flex:1, no max-width needed on tablet */
   .zoom-modal-dialog { width: min(740px, calc(100vw - 28px)); padding: 20px 16px 16px; }
-  .closing-banner { min-height: 118px; }
 }
 
 /* ── 18. RESPONSIVE — SMALL MOBILE ─────────────────────────────── */
 @media (max-width: 480px) {
   :root { --header-h: 58px; }
 
-  .timer-side { display: none; }
+  #timer-bar { padding: 0 8px; gap: 6px; }
+  .timer-side { min-width: 44px; }
+  #elapsed-display, #remaining-display { font-size: 0.72rem; letter-spacing: 0.02em; }
+  .timer-label { display: none; }
+  #timer-controls { gap: 4px; }
+  .ctrl-btn { font-size: 0.68rem; padding: 5px 8px; }
+
   #dot-nav    { display: none; }
 
   .acc-header { padding: 14px 14px; gap: 10px; }
@@ -1606,10 +1615,12 @@ p  { color: var(--text-2); font-size: 0.95rem; }
 
   .slide { padding: 32px 14px; }
 
-  /* Hide corner images on small phones — too cluttered */
-  .hero-corner-img { display: none; }
+  .hero-corner-img { display: block; }
+  .hero-img-tl { width: 88px; top: 12px; left: 8px; }
+  .hero-img-br { width: 100px; right: 10px; bottom: 12px; }
+
   .closing-text-inner { white-space: normal; max-width: 100%; }
-  .closing-banner { min-height: 100px; padding: 16px 14px 18px; }
+  .closing-banner { padding: 12px 12px; }
   .rocket-flight { font-size: 1.6rem; }
   /* Bulb: stack vertically on small screens */
   .bulb-row { flex-direction: column; }
