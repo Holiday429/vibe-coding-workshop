@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>From Idea to Webpage — Vibe Coding Workshop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       PROGRESS HEADER — Fixed at top, tracks 60-minute session
+       ============================================================ -->
+  <header id="progress-header">
+    <div id="progress-track">
+      <div id="progress-fill"></div>
+    </div>
+    <div id="timer-bar">
+      <div class="timer-side">
+        <span id="elapsed-display">00:00</span>
+        <span class="timer-label">elapsed</span>
+      </div>
+      <div id="timer-controls">
+        <button id="btn-start" class="ctrl-btn primary">▶ Start</button>
+        <button id="btn-pause" class="ctrl-btn" disabled>⏸ Pause</button>
+        <button id="btn-reset" class="ctrl-btn">↺ Reset</button>
+      </div>
+      <div class="timer-side">
+        <span id="remaining-display">60:00</span>
+        <span class="timer-label">remaining</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       DOT NAVIGATION — right rail with hover labels
+       ============================================================ -->
+  <nav id="dot-nav" aria-label="Slide navigation">
+    <button class="dot active" data-index="0"><span class="dot-label">Intro</span></button>
+    <button class="dot" data-index="1"><span class="dot-label">Part 1 — Why?</span></button>
+    <button class="dot" data-index="2"><span class="dot-label">Part 2 — What?</span></button>
+    <button class="dot" data-index="3"><span class="dot-label">Part 3 — How?</span></button>
+    <button class="dot" data-index="4"><span class="dot-label">Part 4 — Take Action</span></button>
+  </nav>
+
+  <!-- ============================================================
+       SLIDES
+       ============================================================ -->
+  <main id="slides-container">
+
+    <!-- ── SLIDE 0 · HERO ─────────────────────────────────────── -->
+    <section class="slide" id="slide-0">
+      <!-- Corner images: idea.png top-left, coding.png bottom-right -->
+      <img src="assets/idea.png" alt="" class="hero-corner-img hero-img-tl" aria-hidden="true" />
+      <img src="assets/coding.png" alt="" class="hero-corner-img hero-img-br" aria-hidden="true" />
+
+      <div class="slide-inner">
+        <div class="hero-top">
+          <div class="hero-tag">1-Hour Workshop · Vibe Coding</div>
+          <h1>
+            From <em class="title-idea">Idea</em> to
+            <span class="highlight highlight-yellow highlight-anim">Webpage</span>
+          </h1>
+          <p class="hero-sub">Step-by-Step Guide for Absolute Beginners</p>
+          <div class="badge-row">
+            <span class="comic-badge badge-blue">🧠 Zero Coding</span>
+            <span class="comic-badge badge-green">⚡ AI-Powered</span>
+            <span class="comic-badge badge-red">🌐 Live Deploy</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SLIDE 1 · PART 1 — WHY? ───────────────────────────── -->
+    <section class="slide" id="slide-1">
+      <div class="slide-inner">
+        <div class="part-chip chip-yellow">PART 1</div>
+        <h2>Why a <span class="highlight highlight-blue">personal webpage?</span></h2>
+        <p class="section-lead">The HTML era is coming!</p>
+
+        <div class="two-col">
+          <div class="comic-card card-hover">
+            <div class="card-icon-big">📄</div>
+            <h3>Beyond the PDF Resume</h3>
+            <p>Static PDFs can't show personality, interactions, or live work. A webpage can.</p>
+          </div>
+          <div class="comic-card card-hover">
+            <!-- PowerPoint icon: slide frame + orange P + content bars -->
+            <svg class="card-icon-svg" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Screen / slide background -->
+              <rect x="4" y="6" width="48" height="34" rx="4" fill="#D04923" stroke="#1A1A2E" stroke-width="2.5"/>
+              <!-- Inner slide white area -->
+              <rect x="9" y="11" width="38" height="24" rx="2" fill="white" stroke="#1A1A2E" stroke-width="1.5"/>
+              <!-- Bold "P" letterform -->
+              <text x="14" y="30" font-family="Arial, sans-serif" font-size="17" font-weight="900" fill="#D04923">P</text>
+              <!-- Content lines suggesting slide layout -->
+              <line x1="28" y1="17" x2="43" y2="17" stroke="#1A1A2E" stroke-width="2" stroke-linecap="round"/>
+              <line x1="28" y1="22" x2="43" y2="22" stroke="#1A1A2E" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+              <line x1="28" y1="27" x2="40" y2="27" stroke="#1A1A2E" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+              <!-- Stand / podium -->
+              <line x1="28" y1="40" x2="28" y2="47" stroke="#1A1A2E" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="20" y1="47" x2="36" y2="47" stroke="#1A1A2E" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+            <h3>The Anti-Slide Movement</h3>
+            <p>Replace boring PPT decks with interactive, shareable, living documents.</p>
+          </div>
+        </div>
+
+        <!-- Interactive lightbulb: click to reveal key takeout -->
+        <div class="bulb-row" id="bulb-row">
+          <button class="bulb-btn" id="bulb-btn" aria-expanded="false" aria-controls="bulb-expand">
+            <span class="bulb-icon-big">💡</span>
+            <span class="bulb-cta">Key take-out</span>
+          </button>
+          <div class="bulb-expand" id="bulb-expand" aria-hidden="true">
+            <strong>Key take-out:</strong>
+            <p>A personal webpage is a digital stage to <em>SHOW</em> yourself.<br />
+            A web link is more professional, interactive, and shareable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SLIDE 2 · PART 2 — WHAT? ─────────────────────────── -->
+    <section class="slide" id="slide-2">
+      <div class="slide-inner">
+        <div class="part-chip chip-green">PART 2</div>
+        <h2>What can a webpage <span class="highlight highlight-green">be used for?</span></h2>
+
+        <div class="three-col">
+          <a class="use-card card-hover use-card-private" href="#" aria-disabled="true" tabindex="-1">
+            <div class="use-dot use-dot-blue"></div>
+            <!-- Personal: person + sparkle -->
+            <svg class="use-icon" viewBox="0 0 64 64" fill="none" stroke="#1A1A2E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="32" cy="24" r="11"/>
+              <path d="M10 58c0-12.2 9.8-22 22-22s22 9.8 22 22"/>
+              <path d="M50 9l1.5 3.2 3.2 1.5-3.2 1.5L50 18.4l-1.5-3.2-3.2-1.5 3.2-1.5z"/>
+              <path d="M10 38l1 2.2 2.2 1-2.2 1L10 44.4l-1-2.2-2.2-1 2.2-1z"/>
+            </svg>
+            <div class="use-tag">Personal</div>
+            <div class="use-title">The Prism of Time</div>
+            <div class="use-link">Private Demo</div>
+          </a>
+          <a class="use-card card-hover" href="http://xhslink.com/o/7zIqoOtCxut" target="_blank" rel="noopener">
+            <div class="use-dot use-dot-red"></div>
+            <!-- Professional: briefcase -->
+            <svg class="use-icon" viewBox="0 0 64 64" fill="none" stroke="#1A1A2E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="7" y="24" width="50" height="32" rx="5"/>
+              <path d="M22 24v-6a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v6"/>
+              <line x1="7" y1="40" x2="57" y2="40"/>
+              <rect x="27" y="36" width="10" height="8" rx="2"/>
+            </svg>
+            <div class="use-tag">Professional</div>
+            <div class="use-title">Airbnb Presentation</div>
+            <div class="use-link">View Live →</div>
+          </a>
+          <a class="use-card card-hover" href="http://xhslink.com/o/5MgERpBlnnj" target="_blank" rel="noopener">
+            <div class="use-dot use-dot-green"></div>
+            <!-- Knowledge Base: open book -->
+            <svg class="use-icon" viewBox="0 0 64 64" fill="none" stroke="#1A1A2E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M32 54V18c0 0-4-8-20-8v36c16 0 20 8 20 8z"/>
+              <path d="M32 54V18c0 0 4-8 20-8v36c-16 0-20 8-20 8z"/>
+              <line x1="16" y1="26" x2="26" y2="26"/>
+              <line x1="16" y1="33" x2="26" y2="33"/>
+              <line x1="16" y1="40" x2="26" y2="40"/>
+              <line x1="38" y1="26" x2="48" y2="26"/>
+              <line x1="38" y1="33" x2="48" y2="33"/>
+              <line x1="38" y1="40" x2="48" y2="40"/>
+            </svg>
+            <div class="use-tag">Knowledge Base</div>
+            <div class="use-title">Vibe Curriculum Site</div>
+            <div class="use-link">View Live →</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SLIDE 3 · PART 3 — HOW? (Full Interactive Accordion) ─ -->
+    <section class="slide slide-tall" id="slide-3">
+      <div class="slide-inner">
+        <div class="part-chip chip-blue">PART 3</div>
+        <h2>How to <span class="highlight highlight-red">build a webpage?</span></h2>
+
+        <!-- Feasibility Check: typewriter Q→A + standalone todo checkbox -->
+        <div class="feasibility-wrapper">
+          <!-- Standalone todo-style checkbox, outside the main border -->
+          <button class="feasibility-todo-btn" id="feasibility-check-btn" aria-label="Mark as understood" aria-pressed="false">
+            <span class="todo-check-mark">✓</span>
+          </button>
+          <div class="feasibility-box" id="feasibility-box">
+            <div class="feasibility-content">
+              <strong class="feasibility-title">Feasibility Check:</strong>
+              <div class="tw-line">
+                <span class="tw-lbl tw-lbl-q">Q: </span><span id="tw-q" class="tw-text"></span><span class="tw-cursor" id="tw-cur-q">|</span>
+              </div>
+              <div class="tw-line" id="tw-a-line">
+                <span class="tw-lbl tw-lbl-a">A: </span><span id="tw-a" class="tw-text"></span><span class="tw-cursor" id="tw-cur-a">|</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PHASE ACCORDION ── -->
+        <div class="accordion" id="phase-accordion">
+
+          <!-- PHASE A -->
+          <div class="acc-item" data-color="blue">
+            <button class="acc-header" aria-expanded="false">
+              <span class="acc-badge badge-blue">A</span>
+              <span class="acc-title">The Toolstack</span>
+              <span class="acc-sub">VS Code + Claude — the essentials</span>
+              <span class="acc-arrow">▼</span>
+            </button>
+            <div class="acc-body" hidden>
+              <div class="acc-inner">
+                <div class="two-col-sm">
+                  <div class="tool-card">
+                    <div class="tool-icon">🖥️</div>
+                    <h4>VS Code</h4>
+                    <p>Your coding editor — where the files live. Free to download at code.visualstudio.com.</p>
+                    <ul class="bullet-list">
+                      <li>How to open VS Code</li>
+                      <li>Install the Claude Code (CC) extension</li>
+                      <li>How to choose / change AI models</li>
+                      <li>How to check CC usage</li>
+                    </ul>
+                  </div>
+                  <div class="tool-card">
+                    <div class="tool-icon">🤖</div>
+                    <h4>Claude (AI)</h4>
+                    <p>Your AI pair-programmer. Talks to you in plain English and writes the code.</p>
+                    <ul class="bullet-list">
+                      <li>Claude Code (Anthropic) — primary tool</li>
+                      <li>Codex (OpenAI / ChatGPT)</li>
+                      <li>Antigravity (Google / Gemini)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PHASE B -->
+          <div class="acc-item" data-color="yellow">
+            <button class="acc-header" aria-expanded="false">
+              <span class="acc-badge badge-yellow">B</span>
+              <span class="acc-title">Blueprinting</span>
+              <span class="acc-sub">Plan with AI first — don't start with code</span>
+              <span class="acc-arrow">▼</span>
+            </button>
+            <div class="acc-body" hidden>
+              <div class="acc-inner">
+                <div class="callout callout-yellow">
+                  <span class="callout-icon">💬</span>
+                  <div><strong>Vibe Check First:</strong>
+                    <p>Don't start with code; start with a conversation. Imagine you are a boss giving a brief to your AI colleagues — be structured and clear about what you expect.</p>
+                  </div>
+                </div>
+
+                <h4 class="sub-heading">The Structured Prompt Template</h4>
+                <div class="prompt-steps">
+                  <div class="prompt-step step-blue">
+                    <button class="prompt-step-toggle" type="button" aria-expanded="false">
+                      <span class="step-num">1</span>
+                      <strong>Role</strong>
+                      <span class="prompt-step-arrow">▼</span>
+                    </button>
+                    <div class="prompt-step-body">
+                      <p>"You are an expert Frontend Developer and UI/UX Designer. You specialize in creating modern, responsive, and high-end personal portfolios using HTML, Tailwind CSS, and Lucide Icons."</p>
+                    </div>
+                  </div>
+                  <div class="prompt-step step-yellow">
+                    <button class="prompt-step-toggle" type="button" aria-expanded="false">
+                      <span class="step-num">2</span>
+                      <strong>Core Task</strong>
+                      <span class="prompt-step-arrow">▼</span>
+                    </button>
+                    <div class="prompt-step-body">
+                      <p>"I want to build a personal website that acts as my [digital business card / project showcase / job-seeking portfolio]. The goal is to make a lasting impression on [recruiters / potential collaborators]."</p>
+                    </div>
+                  </div>
+                  <div class="prompt-step step-green">
+                    <button class="prompt-step-toggle" type="button" aria-expanded="false">
+                      <span class="step-num">3</span>
+                      <strong>The 'Vibe'</strong>
+                      <span class="prompt-step-arrow">▼</span>
+                    </button>
+                    <div class="prompt-step-body">
+                      <p>Visual style: [Minimalist White / Cyberpunk Dark / Warm &amp; Academic / High-tech Professional]<br />
+                      Color palette: [e.g., Deep navy and gold / All white with soft shadows]<br />
+                      Typography: [e.g., Elegant Serif for headings]<br />
+                      Reference: "I want it to feel like Apple product pages — lots of whitespace and smooth transitions."</p>
+                    </div>
+                  </div>
+                  <div class="prompt-step step-red">
+                    <button class="prompt-step-toggle" type="button" aria-expanded="false">
+                      <span class="step-num">4</span>
+                      <strong>Content Sections</strong>
+                      <span class="prompt-step-arrow">▼</span>
+                    </button>
+                    <div class="prompt-step-body">
+                      <p>Hero: big catchy headline + short bio<br />
+                      Project Gallery: 3–4 cards with images and descriptions<br />
+                      Tech Stack: clean grid showing skills<br />
+                      Contact: social links and email button</p>
+                    </div>
+                  </div>
+                  <div class="prompt-step step-blue">
+                    <button class="prompt-step-toggle" type="button" aria-expanded="false">
+                      <span class="step-num">5</span>
+                      <strong>Technical Constraints</strong>
+                      <span class="prompt-step-arrow">▼</span>
+                    </button>
+                    <div class="prompt-step-body">
+                      <p>"Make it fully mobile-responsive. Keep the code modular and clean — separate the HTML, CSS, and JS so it's easy to manage."</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tip-pill">
+                  <div class="tip-pill-title">📎 Feed your content</div>
+                  <p>Provide your resume, portfolio, or journals to the AI first.<br />
+                  <span class="tip-nowrap">This helps it understand who it is building for, and what source materials to use.</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PHASE C -->
+          <div class="acc-item" data-color="green">
+            <button class="acc-header" aria-expanded="false">
+              <span class="acc-badge badge-green">C</span>
+              <span class="acc-title">Visual Art Direction</span>
+              <span class="acc-sub">Define the look and feel</span>
+              <span class="acc-arrow">▼</span>
+            </button>
+            <div class="acc-body" hidden>
+              <div class="acc-inner">
+                <div class="two-col-sm">
+                  <div class="path-card path-blue path-card-zoom" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Open Path 1 details">
+                    <div class="path-label">Path 1</div>
+                    <h4>Have a Reference?</h4>
+                    <ol class="numbered-list">
+                      <li>Find a website you love on <strong>Pinterest</strong> or <strong>Dribbble</strong></li>
+                      <li>Take a screenshot of it</li>
+                      <li>Upload the screenshot to Claude and say:<br />
+                        <em>"I love the typography and color palette of this image. Use this aesthetic to build my landing page."</em>
+                      </li>
+                    </ol>
+                  </div>
+                  <div class="path-card path-green path-card-zoom" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Open Path 2 details">
+                    <div class="path-label">Path 2</div>
+                    <h4>Design It Yourself</h4>
+                    <ul class="tool-links">
+                      <li>
+                        <span class="link-icon">🎨</span>
+                        <div>
+                          <strong>Stitch — Design with AI</strong>
+                          <span class="link-url">stitch.withgoogle.com</span>
+                        </div>
+                      </li>
+                      <li>
+                        <span class="link-icon">🧩</span>
+                        <div>
+                          <strong>The Component Gallery</strong>
+                          <span class="link-url">component.gallery</span>
+                        </div>
+                      </li>
+                      <li>
+                        <span class="link-icon">🔠</span>
+                        <div>
+                          <strong>Material Symbols &amp; Icons</strong>
+                          <span class="link-url">fonts.google.com/icons</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PHASE D -->
+          <div class="acc-item" data-color="red">
+            <button class="acc-header" aria-expanded="false">
+              <span class="acc-badge badge-red">D</span>
+              <span class="acc-title">Iterative Refinement</span>
+              <span class="acc-sub">"Talk-to-Fix" — one change at a time</span>
+              <span class="acc-arrow">▼</span>
+            </button>
+            <div class="acc-body" hidden>
+              <div class="acc-inner">
+                <h4 class="sub-heading">Polish Checklist</h4>
+                <div class="checklist-grid">
+                  <div class="check-card check-card-zoom" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Open UI Consistency checklist">
+                    <div class="check-header">
+                      <span class="check-icon">🎨</span>
+                      <strong>UI Consistency</strong>
+                    </div>
+                    <ul class="check-bullets">
+                      <li>Are all button corners the same?</li>
+                      <li>Is spacing between sections even?</li>
+                      <li>Is the color palette unified?</li>
+                    </ul>
+                    <div class="prompt-mini">"Review the entire page for UI consistency. Ensure all buttons use the same corner radius and padding. Make sure headings follow the same font weight and color scheme."</div>
+                  </div>
+                  <div class="check-card check-card-zoom" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Open Mobile Responsiveness checklist">
+                    <div class="check-header">
+                      <span class="check-icon">📱</span>
+                      <strong>Mobile Responsiveness</strong>
+                    </div>
+                    <ul class="check-bullets">
+                      <li>Does the text overlap on a small screen?</li>
+                      <li>Do images scale down?</li>
+                      <li>Is there a working mobile menu?</li>
+                    </ul>
+                    <div class="prompt-mini">"Check the layout for mobile devices. Ensure the hero section doesn't overflow and the project grid stacks vertically on smaller screens. Add a responsive hamburger menu if missing."</div>
+                  </div>
+                  <div class="check-card check-card-zoom" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Open Readability and Accessibility checklist">
+                    <div class="check-header">
+                      <span class="check-icon">👁️</span>
+                      <strong>Readability &amp; Accessibility</strong>
+                    </div>
+                    <ul class="check-bullets">
+                      <li>Is there enough contrast between text and background?</li>
+                      <li>Is the font size easy to read?</li>
+                    </ul>
+                    <div class="prompt-mini">"Improve text contrast for better readability. If the background is dark, ensure body text is bright enough. Add 'alt' tags to all images for SEO and accessibility."</div>
+                  </div>
+                  <div class="check-card check-card-zoom" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Open Interactive Feedback checklist">
+                    <div class="check-header">
+                      <span class="check-icon">✨</span>
+                      <strong>Interactive Feedback</strong>
+                    </div>
+                    <ul class="check-bullets">
+                      <li>Do buttons react when you hover?</li>
+                      <li>Do links actually go somewhere?</li>
+                    </ul>
+                    <div class="prompt-mini">"Add subtle hover effects (slight lift or color shift) to all clickable cards and buttons. Ensure all external links open in a new tab (target='_blank')."</div>
+                  </div>
+                  <div class="check-card check-card-zoom" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Open Assets and Performance checklist">
+                    <div class="check-header">
+                      <span class="check-icon">⚡</span>
+                      <strong>Assets &amp; Performance</strong>
+                    </div>
+                    <ul class="check-bullets">
+                      <li>Are the images loading quickly?</li>
+                      <li>Are any icons broken or missing?</li>
+                    </ul>
+                    <div class="prompt-mini">"Optimize the page for speed. If I am using high-resolution images, suggest a way to lazy-load them. Also, verify that all icons (Lucide/FontAwesome) are rendering correctly."</div>
+                  </div>
+                </div>
+
+                <h4 class="sub-heading" style="margin-top:28px;">Pro Tips for "Talk-to-Fix"</h4>
+                <div class="tips-row">
+                  <div class="tip-comic">
+                    <div class="tip-num">01</div>
+                    <h4>Don't Start Over</h4>
+                    <p>The AI learns from your conversation context. Say: <em>"The button turned red, but I wanted blue. Fix that."</em></p>
+                  </div>
+                  <div class="tip-comic">
+                    <div class="tip-num">02</div>
+                    <h4>Screenshot &amp; Feedback</h4>
+                    <p>Take a screenshot of the broken part and upload it directly to Claude for visual feedback.</p>
+                  </div>
+                  <div class="tip-comic">
+                    <div class="tip-num">03</div>
+                    <h4>One-at-a-Time Rule</h4>
+                    <p>Don't ask for 10 changes in one prompt — the AI gets confused. Ask 1–2, see the result, then continue.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PHASE E -->
+          <div class="acc-item" data-color="purple">
+            <button class="acc-header" aria-expanded="false">
+              <span class="acc-badge badge-purple">E</span>
+              <span class="acc-title">Going Live 🚀</span>
+              <span class="acc-sub">Free deployment via static hosting</span>
+              <span class="acc-arrow">▼</span>
+            </button>
+            <div class="acc-body" hidden>
+              <div class="acc-inner">
+                <div class="deploy-steps">
+                  <div class="deploy-step">
+                    <div class="deploy-num">1</div>
+                    <div>
+                      <strong>Create a hosting account</strong>
+                      <p>Sign up on your preferred hosting platform.</p>
+                    </div>
+                  </div>
+                  <div class="deploy-step">
+                    <div class="deploy-num">2</div>
+                    <div>
+                      <strong>Create a new site project</strong>
+                      <p>Create a project with a simple name (e.g. <span class="inline-code">my-portfolio</span>). Keep it public if required by your host.</p>
+                    </div>
+                  </div>
+                  <div class="deploy-step">
+                    <div class="deploy-num">3</div>
+                    <div>
+                      <strong>Upload your files</strong>
+                      <p>Upload your HTML, CSS, and JS files in the project dashboard.</p>
+                      <div class="warning-box" style="white-space:nowrap;">⚠️ Your main file MUST be named <span class="inline-code">index.html</span></div>
+                      <p class="deploy-note">Save or publish the upload in your platform dashboard.</p>
+                    </div>
+                  </div>
+                  <div class="deploy-step">
+                    <div class="deploy-num">4</div>
+                    <div>
+                      <strong>Enable web publishing</strong>
+                      <p style="white-space:nowrap;">Open your host settings and enable static site publishing for this project.</p>
+                    </div>
+                  </div>
+                  <div class="deploy-step deploy-step-last">
+                    <div class="deploy-num deploy-num-star">★</div>
+                    <div>
+                      <strong>Get your live link!</strong>
+                      <p>Wait ~1–2 minutes, then refresh. Your site will be live at:</p>
+                      <p class="live-url-text"><span class="inline-code">https://your-site.com</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /accordion -->
+      </div>
+    </section>
+
+    <!-- ── SLIDE 4 · PART 4 — TAKE ACTION ────────────────────── -->
+    <section class="slide" id="slide-4">
+      <div class="slide-inner">
+        <div class="part-chip chip-red">PART 4</div>
+        <h2>Take action: <span class="highlight highlight-yellow">build your own!</span></h2>
+
+        <div class="action-row">
+          <div class="comic-card action-card card-hover">
+            <div class="action-num action-num-blue">01</div>
+            <h3>Build Your Own Idea</h3>
+            <p>For those with a project, a hobby, or a specific goal in mind.</p>
+            <div class="prompt-box">
+              <div class="prompt-label">Prompt</div>
+              <code>I want to build a [Type of Site] for [Target Audience]. The vibe should be [Minimalist / Bold / Classic]. Let's start with…</code>
+            </div>
+          </div>
+          <div class="comic-card action-card card-hover action-card-highlight">
+            <div class="action-num action-num-yellow">02</div>
+            <h3>Resume-to-Web Hack</h3>
+            <p>No idea yet? Use your resume as the raw material.</p>
+            <div class="prompt-box">
+              <div class="prompt-label">Prompt</div>
+              <code>Here is my resume: [Your file]. Transform this into a high-end, 1-page professional portfolio that makes me stand out to recruiters.</code>
+            </div>
+          </div>
+        </div>
+
+        <div class="closing-banner" id="closing-banner">
+          <button class="closing-launch-btn" id="closing-launch-btn" type="button" aria-label="Launch message">
+            <span class="closing-rocket" aria-hidden="true">🚀</span>
+          </button>
+          <span class="closing-text"><span class="closing-text-inner">Your digital stage is waiting. Start today.</span></span>
+        </div>
+        <span class="rocket-flight" id="rocket-flight" aria-hidden="true">🚀</span>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="zoom-modal" id="checklist-modal" hidden>
+    <div class="zoom-modal-backdrop" data-close-modal></div>
+    <div class="zoom-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="checklist-modal-title">
+      <button class="zoom-modal-close" type="button" id="checklist-modal-close" aria-label="Close popup">×</button>
+      <div class="zoom-modal-content" id="checklist-modal-content"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
