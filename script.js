@@ -189,11 +189,6 @@ btnReset.addEventListener('click', resetTimer);
 
 renderTimer(); // initial display
 
-// Mobile-first: show hero artwork animation immediately on smaller screens
-if (window.matchMedia('(max-width: 768px)').matches) {
-  heroSlide?.classList.add('hero-started');
-}
-
 
 // ── 2. ACCORDION (Part 3 phases) ─────────────────────────────────
 
